@@ -9,7 +9,7 @@ public class Task_1_Number_Game {
         
         int minRange = 1;
         int maxRange = 100;
-        int maxAttempts = 7;
+        int maxAttempts = 10;
         int score = 0;
         
         System.out.println(" Number Guessing Game!\n");
