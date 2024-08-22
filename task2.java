@@ -1,41 +1,57 @@
 import java.util.Scanner;
 
-public class Task_2_Student_Grade_Calculator {
+public class Gradecalculator {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter the number of subjects: ");
-        int numOfSubjects = scanner.nextInt();
 
-        int totalscore = 0;
-        for (int i = 1; i <= numOfSubjects; i++) {
-            System.out.print("Enter marks scored in subject " + i + ": ");
-            int marks = scanner.nextInt();
-            totalscore += marks;
+        System.out.print("Enter the no.of subjects: ");
+        int subjectCount = input.nextInt();
+
+
+        int  Totalmarks = 0;
+        int mark;
+
+
+        for (int i = 0; i < subjectCount; i++) {
+            System.out.print("Enter marks for subject " + (i + 1) + " (out of 100): ");
+            mark = input.nextInt();
+
+
+            while (mark < 0 || mark > 100) {
+                System.out.print("Invalid score. Please enter input between 0 and 100: ");
+                mark = input.nextInt();
+            }
+
+            Totalmarks += mark;
         }
 
-        double averagePercentage = (double) totalscore / numOfSubjects;
 
-        char grade;
-        if (averagePercentage >= 90) {
-            grade = 'A';
-        } else if (averagePercentage >= 80) {
-            grade = 'B';
-        } else if (averagePercentage >= 70) {
-            grade = 'C';
-        } else if (averagePercentage >= 60) {
-            grade = 'D';
-        } else if (averagePercentage >= 50) {
-            grade = 'E';
+        double average = (double)Totalmarks / subjectCount;
+
+
+        String grade;
+        if (average >= 90) {
+            grade = "A+";
+        } else if (average >= 80) {
+            grade = "A";
+        } else if (average >= 70) {
+            grade = "B";
+        } else if (average >= 60) {
+            grade = "C";
+        } else if (average >= 50) {
+            grade = "D";
         } else {
-            grade = 'F';
+            grade = "F";
         }
 
-        System.out.println("\nTotal score: " + totalscore);
-        System.out.println("Average percentage: " + averagePercentage + "%");
+      
+        System.out.println("\n--- Report Card ---");
+        System.out.println("Total Marks: " + Totalmarks);
+        System.out.println("Average Percentage: " + average + "%");
         System.out.println("Grade: " + grade);
 
-        scanner.close();
+        input.close();
     }
 }
